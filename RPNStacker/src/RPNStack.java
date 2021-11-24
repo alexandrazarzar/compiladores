@@ -17,7 +17,7 @@ public class RPNStack {
 		char currentOperator;
 		char currentSymbol;
 
-
+		//feature de scanning
 		while (in.hasNext()) {
 
 			if(in.hasNextInt()) {
@@ -53,6 +53,7 @@ public class RPNStack {
 				}
 			}
 		}
+		//a partir da lista de tokens, sera realizada a interpretacao das expressoes com uma pilha
 		for (int i = 0; i < tokens.size(); i++) {
 
 			Token currentToken = tokens.get(i);
