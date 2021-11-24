@@ -6,7 +6,7 @@ import java.util.*;
 
 public class RPNStack {
 
-	public static void main(String[] args) throws FileNotFoundException{
+	public static void main(String[] args) throws FileNotFoundException, Exception{
 		// TODO Auto-generated method stub
 		Scanner in = new Scanner(openFile());
 
@@ -49,7 +49,7 @@ public class RPNStack {
 					tokens.add(slashToken);
 
 				}else {
-					System.out.println("error");
+					throw new Exception("Error: Unexpected character: " + currentSymbol);
 				}
 			}
 		}
@@ -62,26 +62,26 @@ public class RPNStack {
 			if (currentType == TokenType.NUM) {
 				int inteiro = Integer.parseInt(currentToken.lexeme);				
 				stack.push(inteiro);
-				
+
 			}else {
 				currentY = stack.pop();
 				currentX = stack.pop();
-				
+
 				if (currentType == TokenType.PLUS){
 					stack.push(currentX + currentY);
-					
+
 				}else if (currentType == TokenType.MINUS){
 					stack.push(currentX - currentY);
-					
+
 				}else if (currentType == TokenType.STAR){
 					stack.push(currentX * currentY);
-					
+
 				}else if (currentType == TokenType.SLASH){
 					stack.push(currentX / currentY);
 				}
 			}
 		}
-		
+
 		System.out.println("\nThe final answer is " + stack.pop());
 	}
 
